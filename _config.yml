@@ -9,7 +9,7 @@ relative_permalinks: true
 # Setup
 title:            魔趣俱乐部
 tagline:          '分享魔方的乐趣'
-description:      '如今，越来越多人开始喜欢玩魔方这项时尚又不乏趣味的活动。在这里，我们将分享有关魔方的点滴趣事，也欢迎大家踊跃参与，分享你与魔方的故事: )'
+description:      '如今，越来越多人开始接触魔方这项时尚又不乏趣味的活动。在这里，我们将分享有关魔方的点滴趣事，也欢迎大家踊跃参与，分享你与魔方的故事: )'
 description_bak:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
 url:              http://hyde.getpoole.com
 baseurl:          /
