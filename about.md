@@ -1,6 +1,7 @@
 ---
 layout: page
 title: 关于我们
+keywords: 关于我们
 ---
 
 <p class="message">

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 欢迎来到魔趣俱乐部
+keywords: 魔方故事
 ---
 
 <p class="message">
