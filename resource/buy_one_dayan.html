@@ -41,12 +41,12 @@
 			$('#main').show();
 		} else {
 			$('#main').remove();
-			//window.location = "http://magicfun.club/404.html";
+			window.location = "http://magicfun.club/404.html";
 		}
 	
-		var fromName = getURLParameter('fromName') ? reverseWords(getURLParameter('fromName')) : 'Leo Bi';
-		var toName = getURLParameter('toName') ? reverseWords(getURLParameter('toName')) : 'My Friend';
-		var content = getURLParameter('content') ? reverseWords(getURLParameter('content')) : 'Happy new year 2012!'; 
+		var fromName = getURLParameter('fromName') ? reverseWords(getURLParameter('fromName')) : '';
+		var toName = getURLParameter('toName') ? reverseWords(getURLParameter('toName')) : '';
+		var content = getURLParameter('content') ? reverseWords(getURLParameter('content')) : ''; 
 		
 		$('#fromName').text(fromName);
 		$('#toName').text(toName);
