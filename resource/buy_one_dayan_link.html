@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>宝贝购买步骤生成器</title>
+	<style type="text/css" media="screen">
+	.myLabel {
+		text-align : right; 
+	}
+	</style>
+	<script src="js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/js-util.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/ZeroClipboard.js" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	var pageBaseUrl = 'http://magicfun.club/resource/buy_one_dayan.html';
+	//var pageBaseUrl = 'file:///Users/apple/magicfunclub.github.io/resource/buy_one_dayan.html';
+
+	var clip = null;
+	$(document).ready(function() {		
+		clip = new ZeroClipboard.Client();
+		clip.setHandCursor(true);  	
+		clip.addEventListener('mouseOver', function (client) {
+			clip.setText($('#urlField').val());
+		});
+
+		clip.addEventListener('complete', function (client, text) {
+			$('#messageField').css('color','red').text('已将链接复制到剪切板，快试试CTRL+V吧！').show().fadeOut(2000);
+		});
+
+		clip.glue('clip_button','clip_container');
+	});
+
+	function generateUrl() {
+		var pageUrl = pageBaseUrl + '?toName=' + encodeURIComponent(reverseWords($('#toName').val())) + 
+		'&fromName=' + encodeURIComponent(reverseWords($('#fromName').val())) + 
+		'&content=' + encodeURIComponent(reverseWords($('#content').val()));
+		$('#urlField').val(pageUrl);
+	}	
+	</script>
+</head>
+<body>
+	<table border="0" cellspacing="5" cellpadding="5">
+		<tr>
+			<td class="myLabel">Your Friend Name:</td>
+			<td><input type="text" name="toName" value="" id="toName"></td>
+		</tr>
+		<tr>
+			<td class="myLabel">Your Name:</td>
+			<td><input type="text" name="fromName" value="" id="fromName"></td>
+		</tr>
+		<tr>
+			<td class="myLabel">Your Wishes:</td>
+			<td><input type="text" name="content" value="" id="content" style="width:440px"></td>
+		</tr>
+	</table>
+	<div>
+		<input type="button" name="btnGenerateUrl" value="Generate URL" id="btnGenerateUrl" onClick="generateUrl();">
+		<span id="clip_container">
+			<span id="clip_button">
+				<input type="button" name="copyUrl" value="Copy URL" id="btnCopyUrl">
+			</span>
+		</span>
+		<span id="messageField"></span>
+	</div>
+	<div>
+		<input type="text" name="urlField" value="" id="urlField" style="width:640px">
+	</div>
+</body>
+</html>

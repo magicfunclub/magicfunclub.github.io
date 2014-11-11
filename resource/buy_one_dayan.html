@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>宝贝购买步骤</title>
+	<script src="js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/js-util.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		var fromName = getURLParameter('fromName') ? reverseWords(getURLParameter('fromName')) : 'Leo Bi';
+		var toName = getURLParameter('toName') ? reverseWords(getURLParameter('toName')) : 'My friend';
+		var content = getURLParameter('content') ? reverseWords(getURLParameter('content')) : 'Happy new year 2012!'; 
+
+		$('#fromName').text(fromName);
+		$('#toName').text(toName);
+		$('#content').text(content);
+	});
+	</script>
+</head>
+<body>
+	<div>
+		<p>
+			<label id="toName"></label>, 
+		</p>
+		<p>
+			<label id="content"></label>
+		</p>
+		<div>
+			<img src="images/dragon_year.jpg" alt="Happy Chinese New Year！"/>
+		</div>
+		<p>
+			<label id="fromName"></label>
+		</p>
+	</div>
+
+</body>
+</html>
