@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<title>宝贝购买步骤生成器</title>
+	<title>购买步骤生成器</title>
 	<style type="text/css" media="screen">
 	.myLabel {
 		text-align : right; 
@@ -16,7 +16,6 @@
 	<script type="text/javascript" charset="utf-8">
 	var pageBaseUrl = 'http://magicfun.club/resource/buy_one_dayan.html';
 	//var pageBaseUrl = 'file:///Users/apple/magicfunclub.github.io/resource/buy_one_dayan.html';
-	//var pageBaseUrl = 'file:///C:/Users/Leo.Bi/src/magicfunclub.github.io/resource/buy_one_dayan.html';
 
 	var clip = null;
 	$(document).ready(function() {		
@@ -34,9 +33,22 @@
 	});
 
 	function generateUrl() {
-		var pageUrl = pageBaseUrl + '?toName=' + encodeURIComponent(reverseWords($('#toName').val())) + 
-		'&fromName=' + encodeURIComponent(reverseWords($('#fromName').val())) + 
-		'&content=' + encodeURIComponent(reverseWords($('#content').val()));
+		var toName = $('#toName').val();
+		var fromName = $('#fromName').val();
+		var content = $('#content').val();
+		var lastDays = $('#lastDays').val() ? $('#lastDays').val() : 1;
+		
+		var currentDateTime = new Date();
+		var expireTime = currentDateTime.getTime() + 24 * 3600 * 1000 * lastDays; 
+		
+		var token = $.md5(toName + expireTime);
+		
+		var pageUrl = pageBaseUrl + '?toName=' + encodeURIComponent(reverseWords(toName)) + 
+		'&fromName=' + encodeURIComponent(reverseWords(fromName)) + 
+		'&content=' + encodeURIComponent(reverseWords(content)) +
+		'&expireTime=' + expireTime + 
+		'&token=' + token;
+		
 		$('#urlField').val(pageUrl);
 	}	
 	</script>
@@ -52,8 +64,12 @@
 			<td><input type="text" name="fromName" value="" id="fromName"></td>
 		</tr>
 		<tr>
-			<td class="myLabel">Your Wishes:</td>
+			<td class="myLabel">The content:</td>
 			<td><input type="text" name="content" value="" id="content" style="width:440px"></td>
+		</tr>
+		<tr>
+			<td class="myLabel">Expire Days:</td>
+			<td><input type="text" name="lastDays" value="" id="lastDays"></td>
 		</tr>
 	</table>
 	<div>
