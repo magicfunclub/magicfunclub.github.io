@@ -18,7 +18,7 @@ author:
   name:           '魔趣俱乐部'
   url:            http://magicfunclub.github.io
 
-paginate:         2
+paginate:         3
 
 # Custom vars
 version:          1.0.0
