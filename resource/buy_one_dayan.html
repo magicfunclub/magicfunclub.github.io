@@ -14,6 +14,10 @@
 			return false; 
 		}
 		
+		if (!getURLParameter('token')) {
+			return false; 
+		}
+		
 		var expireTime = getURLParameter('ex');
 		
 		if (!expireTime) {
@@ -26,7 +30,7 @@
 		}
 		
 		var toName = reverseWords(getURLParameter('toName'));
-		var token = getURLParameter('token');
+		var token = reverseWords(getURLParameter('token'));
 		var correctToken = $.md5(toName + expireTime);
 		
 		if (correctToken !== token) {
@@ -48,9 +52,17 @@
 		var toName = getURLParameter('toName') ? reverseWords(getURLParameter('toName')) : '';
 		var content = getURLParameter('content') ? reverseWords(getURLParameter('content')) : ''; 
 		
+		var keyword = getURLParameter('keyword') ? reverseWords(getURLParameter('keyword')) : ''; 
+		var goodId = getURLParameter('goodId') ? reverseWords(getURLParameter('goodId')) : ''; 
+		
+		var goodSrc = "images/goods/xxxxx.jpg".replace('xxxxx', goodId);
+		
 		$('#fromName').text(fromName);
 		$('#toName').text(toName);
 		$('#content').text(content);
+		
+		$('#keyword').text(keyword);
+		$('#goodPic').attr('src', goodSrc);
 		
 	});
 	</script>
@@ -58,17 +70,33 @@
 <body>
 	<div id="main" style="display:none;">
 		<p>
-			<label id="test"></label>
-		</p>
-		<p>
 			<label id="toName"></label>, 
 		</p>
 		<p>
 			<label id="content"></label>
 		</p>
-		<div>
+		
+		<div id="step1">
+			<h4>第一步: 搜索宝贝</h4>
+			<p>
+				1) 打开淘宝首页(<a href="http://www.taobao.com" target="_blank">http://www.taobao.com</a>), 输入要搜索的关键词 "<label id="keyword"></label>", 然后点击右方的搜索按钮。
+			</p>
+			<p>
+				2) 按照下图所示方法，将发货地设置为”山东”, 这时页面会重新刷新并只显示山东地区的商品，我们的宝贝就在其中！
+			</p>
 			<img src="images/dragon_year2.jpg" alt="Happy Chinese New Year！"/>
 		</div>
+		
+		<p>
+			下图就是该款宝贝的样子了，查看图片左下角所显示的店铺账号，必须得是“qimingtoy”哦! 
+		</p>
+		
+		<img id="goodPic"/>
+		
+		
+		<p>
+			万分感谢!
+		</p>
 		<p>
 			<label id="fromName"></label>
 		</p>

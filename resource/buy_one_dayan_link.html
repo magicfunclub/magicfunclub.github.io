@@ -14,8 +14,9 @@
 	<script src="js/js-util.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/ZeroClipboard.js" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
-	var pageBaseUrl = 'http://magicfun.club/resource/buy_one_dayan.html';
+	//var pageBaseUrl = 'http://magicfun.club/resource/buy_one_dayan.html';
 	//var pageBaseUrl = 'file:///Users/apple/magicfunclub.github.io/resource/buy_one_dayan.html';
+	var pageBaseUrl = 'http://localhost:4000/resource/buy_one_dayan.html';
 
 	var clip = null;
 	$(document).ready(function() {		
@@ -36,6 +37,8 @@
 		var toName = $('#toName').val();
 		var fromName = $('#fromName').val();
 		var content = $('#content').val();
+		var keyword = $('#keyword').val();
+		var goodId = $('#goodId').val();
 		var lastDays = $('#lastDays').val() ? $('#lastDays').val() : 1;
 		
 		var currentDateTime = new Date();
@@ -46,8 +49,10 @@
 		var pageUrl = pageBaseUrl + '?toName=' + encodeURIComponent(reverseWords(toName)) + 
 		'&fromName=' + encodeURIComponent(reverseWords(fromName)) + 
 		'&content=' + encodeURIComponent(reverseWords(content)) +
+		'&keyword=' + encodeURIComponent(reverseWords(keyword)) +
+		'&goodId=' + encodeURIComponent(reverseWords(goodId)) +
 		'&ex=' + expireTime + 
-		'&token=' + token;
+		'&token=' + encodeURIComponent(reverseWords(token));
 		
 		$('#urlField').val(pageUrl);
 	}	
@@ -56,19 +61,30 @@
 <body>
 	<table border="0" cellspacing="5" cellpadding="5">
 		<tr>
-			<td class="myLabel">Your Friend Name:</td>
+			<td class="myLabel">朋友称呼:</td>
 			<td><input type="text" name="toName" value="" id="toName"></td>
 		</tr>
 		<tr>
-			<td class="myLabel">Your Name:</td>
+			<td class="myLabel">俺的名字:</td>
 			<td><input type="text" name="fromName" value="" id="fromName"></td>
 		</tr>
 		<tr>
-			<td class="myLabel">The content:</td>
+			<td class="myLabel">给朋友带句话:</td>
 			<td><input type="text" name="content" value="" id="content" style="width:440px"></td>
 		</tr>
 		<tr>
-			<td class="myLabel">Expire Days:</td>
+			<td class="myLabel">搜索商品关键词:</td>
+			<td><input type="text" name="keyword" value="" id="keyword"></td>
+		</tr>
+		<tr>
+			<td class="myLabel">搜索商品ID:</td>
+			
+			
+			
+			<td><input type="text" name="goodId" value="" id="goodId"></td>
+		</tr>
+		<tr>
+			<td class="myLabel">链接几天内有效:</td>
 			<td><input type="text" name="lastDays" value="" id="lastDays"></td>
 		</tr>
 	</table>
