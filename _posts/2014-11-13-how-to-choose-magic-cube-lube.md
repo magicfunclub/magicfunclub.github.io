@@ -22,4 +22,3 @@ OMG！千万别尝试！天空飘来了4个字：NO ZUO NO DIE!!!
 
 同学们，求求你们放过无辜的凡士林吧，还是去买专业的小丸号润滑油靠谱啊！
 [![小丸号魔方专用润滑油](/resource/images/best_lube/小丸号魔方专用润滑油.jpg "小丸号魔方专用润滑油")](http://item.taobao.com/item.htm?id=42375438996&spm=lbiMF0000.BJVawj)
-
