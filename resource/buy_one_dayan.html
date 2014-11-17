@@ -54,6 +54,8 @@
 		
 		var keyword = getURLParameter('keyword') ? reverseWords(getURLParameter('keyword')) : ''; 
 		var goodId = getURLParameter('goodId') ? reverseWords(getURLParameter('goodId')) : ''; 
+		var category = getURLParameter('category') ? reverseWords(getURLParameter('category')) : ''; 
+		var wangwang = getURLParameter('wangwang') ? reverseWords(getURLParameter('wangwang')) : ''; 
 		
 		var goodSrc = "images/goods/xxxxx.jpg".replace('xxxxx', goodId);
 		
@@ -63,6 +65,8 @@
 		
 		$('#keyword').text(keyword);
 		$('#goodPic').attr('src', goodSrc);
+		$('#category').text(category);
+		$('#wangwang').text(wangwang);
 		
 	});
 	</script>
@@ -79,7 +83,7 @@
 		<div id="step1">
 			<h4>第一步: 搜索宝贝</h4>
 			<p>
-				1) 打开淘宝首页(<a href="http://www.taobao.com" target="_blank">http://www.taobao.com</a>), 输入要搜索的关键词 "<label id="keyword"></label>", 然后点击右方的搜索按钮。
+				1) 打开淘宝首页(<a href="http://www.taobao.com" target="_blank">http://www.taobao.com</a>), 登录淘宝账号, 输入要搜索的关键词 "<label id="keyword" style="color:red; font-weight:bold"></label>", 然后点击右方的搜索按钮。
 			</p>
 			<p>
 				2) 按照下图所示方法，将发货地设置为”山东”, 这时页面会重新刷新并只显示山东地区的商品，我们的宝贝就在其中！
@@ -87,14 +91,45 @@
 			<img src="images/qiming/fahuodi.jpg"/>
 			
 			<p>
-				下图就是该款宝贝的样子了，查看图片左下角所显示的店铺账号，必须得是“qimingtoy”哦! 
+				3) 下图就是该款宝贝的样子了，正常情况下这个宝贝会出现在第一页的左上部区域的前几行（注意:千万不要点击搜索结果最右边和最下面那行-掌柜热卖的宝贝图片，那些是淘宝的广告），请检查图片左下角所显示的店铺账号，必须得是“qimingtoy”哦! 
 			</p>
-		
 			<img id="goodPic"/>
 		</div>
-
+		<br/>
+		<div id="step2">
+			<h4>第二步: 加入购物车</h4>
+			<p>
+				1) 此时不要着急点击我们店的宝贝图片，可先在搜索结果里找到任何一个其他店铺的宝贝(即非"qimingtoy")的宝贝，点进去，往下翻翻页，随便浏览一下，浏览结束后也不需立即关闭该窗口。
+			</p>
+			
+			<p>
+				2) 现在请点击我们店的宝贝图片进入该宝贝的详情页面。别着急拍，先往下翻翻页，随便浏览一下。然后鼠标单击选择颜色分类"<label id="category" style="color:red; font-weight:bold"></label>"，并将其加入购物车。
+			</p>
+		</div>
+		<br/>
+		<div id="step3">
+			<h4>第三步: 模拟旺旺聊天</h4>
+			<p>
+				1) 在店铺页面的最底部可以找到所有的售前客服。请通过旺旺联系客服"<label id="wangwang" style="color:blue; font-weight:bold"></label>"，并模拟真实顾客的语气问我1~2问题。比如： 
+			</p>
+			
+			<ul>
+				<li>请问发什么快递？</li>
+				<li>什么时候能发货呢？</li>
+			<ul>
+			
+			<img src="images/qiming/kefu.jpg"/>
+		</div>
+		<br/>
+		<div id="step4">
+			<h4>第四步: 付款</h4>
+			<p>
+				
+			</p>
+		</div>		
+		<br/>
 		<p>
-			万分感谢!
+			谢谢!
 		</p>
 		<p>
 			<label id="fromName"></label>

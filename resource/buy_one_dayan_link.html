@@ -39,6 +39,8 @@
 		var content = $('#content').val();
 		var keyword = $('#keyword').val();
 		var goodId = $('#goodId').val();
+		var category = $('#category').val();
+		var wangwang = $('#wangwang').val();
 		var lastDays = $('#lastDays').val() ? $('#lastDays').val() : 1;
 		
 		var currentDateTime = new Date();
@@ -51,6 +53,8 @@
 		'&content=' + encodeURIComponent(reverseWords(content)) +
 		'&keyword=' + encodeURIComponent(reverseWords(keyword)) +
 		'&goodId=' + encodeURIComponent(reverseWords(goodId)) +
+		'&category=' + encodeURIComponent(reverseWords(category)) +
+		'&wangwang=' + encodeURIComponent(reverseWords(wangwang)) +
 		'&ex=' + expireTime + 
 		'&token=' + encodeURIComponent(reverseWords(token));
 		
@@ -84,6 +88,20 @@
 		<tr>
 			<td class="myLabel">搜索商品关键词:</td>
 			<td><input type="text" name="keyword" value="" id="keyword"></td>
+		</tr>
+		<tr>
+			<td class="myLabel">选择颜色分类:</td>
+			<td><input type="text" name="category" value="" id="category"></td>
+		</tr>
+		<tr>
+			<td class="myLabel">客服旺旺:</td>
+			<td>
+				<select name="wangwang" id="wangwang">
+				  <option value ="掌柜">掌柜</option>
+				  <option value ="大圣">大圣</option>
+				  <option value ="小雁">小雁</option>
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<td class="myLabel">链接几天后失效:</td>
