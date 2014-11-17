@@ -7,47 +7,9 @@
 	<script src="js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/jquery.md5.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/js-util.js" type="text/javascript" charset="utf-8"></script>
+	
 	<script type="text/javascript" charset="utf-8">
-	
-	function validate() {
-		if (!getURLParameter('toName')) {
-			return false; 
-		}
-		
-		if (!getURLParameter('token')) {
-			return false; 
-		}
-		
-		var expireTime = getURLParameter('ex');
-		
-		if (!expireTime) {
-			return false; 
-		} else {
-			var currentDateTime = new Date();
-			if (expireTime <= currentDateTime.getTime()) {
-				return false; 
-			}
-		}
-		
-		var toName = reverseWords(getURLParameter('toName'));
-		var token = reverseWords(getURLParameter('token'));
-		var correctToken = $.md5(toName + expireTime);
-		
-		if (correctToken !== token) {
-			return false; 
-		}
-		
-		return true; 
-	}
-	
 	$(document).ready(function() {
-		if (validate()) {
-			$('#main').show();
-		} else {
-			$('#main').remove();
-			window.location = "http://magicfun.club/404.html";
-		}
-	
 		var fromName = getURLParameter('fromName') ? reverseWords(getURLParameter('fromName')) : '';
 		var toName = getURLParameter('toName') ? reverseWords(getURLParameter('toName')) : '';
 		var content = getURLParameter('content') ? reverseWords(getURLParameter('content')) : ''; 
@@ -55,8 +17,9 @@
 		var keyword = getURLParameter('keyword') ? reverseWords(getURLParameter('keyword')) : ''; 
 		var goodId = getURLParameter('goodId') ? reverseWords(getURLParameter('goodId')) : ''; 
 		var category = getURLParameter('category') ? reverseWords(getURLParameter('category')) : ''; 
-		var buyMore = getURLParameter('buyMore') ? reverseWords(getURLParameter('buyMore')) : ''; 
 		var wangwang = getURLParameter('wangwang') ? reverseWords(getURLParameter('wangwang')) : ''; 
+		var buyMore = getURLParameter('buyMore') ? reverseWords(getURLParameter('buyMore')) : ''; 
+		buyMore = "shengshou_2,dayan"
 		
 		var goodSrc = "images/goods/xxxxx.jpg".replace('xxxxx', goodId);
 		
@@ -82,7 +45,7 @@
 	</script>
 </head>
 <body>
-	<div id="main" style="display:none;">
+	<div id="main">
 		<p>
 			<label id="toName"></label>, 
 		</p>
@@ -135,30 +98,11 @@
 				</div>
 				
 			</div>
+			
 		</div>
 		<br/>
-		<div id="step3">
-			<h3>第三步: 模拟旺旺聊天</h3>
-			<p>
-				1) 在店铺页面的最底部可以找到所有的售前客服。请通过旺旺联系客服"<label id="wangwang" style="color:blue; font-weight:bold"></label>"，并模拟真实顾客的语气问我1~2问题。比如： 
-			</p>
-			
-			<ul>
-				<li>请问发什么快递？</li>
-				<li>什么时候能发货呢？</li>
-			<ul>
-			
-			<img src="images/qiming/kefu.jpg"/>
-		</div>
-		<br/>
-		<div id="step4">
-			<h3>第四步: 付款</h3>
-			<p>
-				
-			</p>
-		</div>		
-		<br/>
-		<p>
+		
+		<p style="clear:left;">
 			谢谢!
 		</p>
 		<p>

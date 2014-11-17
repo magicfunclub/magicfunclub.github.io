@@ -21,7 +21,7 @@
 	var clip = null;
 	$(document).ready(function() {		
 		clip = new ZeroClipboard.Client();
-		clip.setHandCursor(true);  	
+		clip.setHandCursor(true);
 		clip.addEventListener('mouseOver', function (client) {
 			clip.setText($('#urlField').val());
 		});
@@ -43,6 +43,11 @@
 		var wangwang = $('#wangwang').val();
 		var lastDays = $('#lastDays').val() ? $('#lastDays').val() : 1;
 		
+		var buyMore = '';
+		$('input[name="buyMore"]:checked').each(function(){
+			buyMore = buyMore + ',' + $(this).val()
+		}); 
+		
 		var currentDateTime = new Date();
 		var expireTime = currentDateTime.getTime() + 24 * 3600 * 1000 * lastDays; 
 		
@@ -54,6 +59,7 @@
 		'&keyword=' + encodeURIComponent(reverseWords(keyword)) +
 		'&goodId=' + encodeURIComponent(reverseWords(goodId)) +
 		'&category=' + encodeURIComponent(reverseWords(category)) +
+		'&buyMore=' + encodeURIComponent(reverseWords(buyMore)) +
 		'&wangwang=' + encodeURIComponent(reverseWords(wangwang)) +
 		'&ex=' + expireTime + 
 		'&token=' + encodeURIComponent(reverseWords(token));
@@ -92,6 +98,15 @@
 		<tr>
 			<td class="myLabel">选择颜色分类:</td>
 			<td><input type="text" name="category" value="" id="category"></td>
+		</tr>
+		<tr>
+			<td class="myLabel">姊妹宝贝:</td>
+			<td>
+				<input type="checkbox" name="buyMore" value="dayan">大雁展翅3阶魔方
+				<input type="checkbox" name="buyMore" value="shengshou_2">圣手2阶魔方
+				<input type="checkbox" name="buyMore" value="shengshou_3">圣手3阶魔方
+				<input type="checkbox" name="buyMore" value="shengshou_4">圣手4阶魔方 
+			</td>
 		</tr>
 		<tr>
 			<td class="myLabel">客服旺旺:</td>
