@@ -86,7 +86,7 @@
 			<td class="myLabel">搜索商品ID:</td>
 			<td>
 				<select name="goodId" id="goodId">
-				  <option value ="dayan">大雁展翅3阶魔方</option>
+				  <option value ="dayan_3">大雁展翅3阶魔方</option>
 				  <option value ="shengshou_all">圣手2-N阶魔方</option>
 				</select>
 			</td>
@@ -100,12 +100,21 @@
 			<td><input type="text" name="category" value="" id="category"></td>
 		</tr>
 		<tr>
-			<td class="myLabel">姊妹宝贝:</td>
+			<td class="myLabel">推荐一同下单的宝贝:</td>
 			<td>
-				<input type="checkbox" name="buyMore" value="dayan">大雁展翅3阶魔方
+				<input type="checkbox" name="buyMore" value="dayan_3">大雁展翅3阶魔方
+				<input type="checkbox" name="buyMore" value="weilong_3">魔域威龙3阶魔方
+				<input type="checkbox" name="buyMore" value="shengshou_mirror">圣手异形(镜面)魔方
 				<input type="checkbox" name="buyMore" value="shengshou_2">圣手2阶魔方
 				<input type="checkbox" name="buyMore" value="shengshou_3">圣手3阶魔方
 				<input type="checkbox" name="buyMore" value="shengshou_4">圣手4阶魔方 
+				<input type="checkbox" name="buyMore" value="shengshou_5">圣手5阶魔方 
+				<input type="checkbox" name="buyMore" value="shengshou_6">圣手6阶魔方 
+				<input type="checkbox" name="buyMore" value="shengshou_7">圣手7阶魔方 
+				<input type="checkbox" name="buyMore" value="accessory_bag">多功能魔方绒袋子
+				<input type="checkbox" name="buyMore" value="accessory_screwdriver">专业魔方螺丝刀
+				<input type="checkbox" name="buyMore" value="accessory_maru">小丸号专业魔方润滑油
+				<input type="checkbox" name="buyMore" value="accessory_z_lube">Z-Lube魔方润滑油
 			</td>
 		</tr>
 		<tr>
@@ -124,10 +133,10 @@
 		</tr>
 	</table>
 	<div>
-		<input type="button" name="btnGenerateUrl" value="Generate URL" id="btnGenerateUrl" onClick="generateUrl();">
+		<input type="button" name="btnGenerateUrl" value="生成 URL" id="btnGenerateUrl" onClick="generateUrl();">
 		<span id="clip_container">
 			<span id="clip_button">
-				<input type="button" name="copyUrl" value="Copy URL" id="btnCopyUrl">
+				<input type="button" name="copyUrl" value="复制 URL" id="btnCopyUrl">
 			</span>
 		</span>
 		<span id="messageField"></span>
