@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>魔方学习资料分享</title>
+	<script src="js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.md5.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/js-util.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	
+	jQuery.fn.addFavorite = function(l, h) {
+	    return this.click(function() {
+	        var t = jQuery(this);
+	        if(jQuery.browser.msie) {
+	            window.external.addFavorite(h, l);
+	        } else if (jQuery.browser.mozilla || jQuery.browser.opera) {
+	            t.attr("rel", "sidebar");
+	            t.attr("title", l);
+	            t.attr("href", h);
+	        } else {
+	            alert("请使用Ctrl+D将本页加入收藏夹！");
+	        }
+	    });
+	};
+	
+	function validate() {
+		if (!getURLParameter('toName')) {
+			return false; 
+		}
+		
+		if (!getURLParameter('token')) {
+			return false; 
+		}
+		
+		if (!getURLParameter('curr')) {
+			return false; 
+		}
+		
+		var toName = reverseWords(getURLParameter('toName'));
+		var curr = getURLParameter('curr');
+		var token = reverseWords(getURLParameter('token'));
+		var correctToken = $.md5(toName + curr);
+		
+		if (correctToken !== token) {
+			return false; 
+		}
+		
+		return true; 
+	}
+	
+	$(document).ready(function() {
+		$('#fav').addFavorite('收藏本站',location.href);
+		
+		if (validate()) {
+			$('#main').show();
+		} else {
+			$('#main').remove();
+			window.location = "http://magicfun.club/404.html";
+		}
+	
+		var fromName = getURLParameter('fromName') ? reverseWords(getURLParameter('fromName')) : '';
+		var toName = getURLParameter('toName') ? reverseWords(getURLParameter('toName')) : '';
+		var content = getURLParameter('content') ? reverseWords(getURLParameter('content')) : ''; 
+
+		$('#toName').text(toName);
+		$('#content').text(content);
+		
+		if (fromName) {
+			$('#fromName').text(fromName);
+		} else {
+			$('#fromName').text('启明玩具');
+		}
+		
+	});
+	</script>
+</head>
+<body>
+	<div id="main" style="display:none;">
+		<p>
+			<label id="toName"></label>, 
+		</p>
+		<p>
+			<label id="content"></label>
+		</p>
+
+		<p>
+			页面装修中...敬请期待！
+		</p>
+
+		<br/>
+		<p>
+			谢谢!
+		</p>
+		<p>
+			<label id="fromName"></label>
+		</p>
+	</div>
+	
+	<a href="javascript:;" title="收藏该页" id="fav">收藏该页</a>
+
+</body>
+</html>

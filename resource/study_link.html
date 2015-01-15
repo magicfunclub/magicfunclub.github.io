@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>魔方学习资料分享链接-生成器</title>
+	<style type="text/css" media="screen">
+	.myLabel {
+		text-align : right; 
+	}
+	</style>
+	<script src="js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.md5.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/js-util.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/ZeroClipboard.js" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	var pageBaseUrl = 'http://magicfun.club/resource/study.html';
+	//var pageBaseUrl = 'http://localhost:4000/resource/study.html';
+
+	var clip = null;
+	$(document).ready(function() {		
+		clip = new ZeroClipboard.Client();
+		clip.setHandCursor(true);
+		clip.addEventListener('mouseOver', function (client) {
+			clip.setText($('#urlField').val());
+		});
+
+		clip.addEventListener('complete', function (client, text) {
+			$('#messageField').css('color','red').text('已将链接复制到剪切板，快试试CTRL+V吧！').show().fadeOut(2000);
+		});
+
+		clip.glue('clip_button','clip_container');
+	});
+
+	function generateUrl() {
+		var toName = $('#toName').val();
+		var fromName = $('#fromName').val();
+		var content = $('#content').val();
+		var keyword = $('#keyword').val();
+		var goodId = $('#goodId').val();
+		var category = $('#category').val();
+		var wangwang = $('#wangwang').val();
+		var lastDays = $('#lastDays').val() ? $('#lastDays').val() : 1;
+		
+		
+		var currentDateTime = new Date();
+		var curr = currentDateTime.getTime(); 
+		
+		var token = $.md5(toName + currentDateTime.getTime());
+		
+		var pageUrl = pageBaseUrl + '?toName=' + encodeURIComponent(reverseWords(toName)) + 
+		'&fromName=' + encodeURIComponent(reverseWords(fromName)) + 
+		'&content=' + encodeURIComponent(reverseWords(content)) +
+		'&curr=' + curr + 
+		'&token=' + encodeURIComponent(reverseWords(token));
+		
+		$('#urlField').val(pageUrl);
+	}	
+	</script>
+</head>
+<body>
+	<table border="0" cellspacing="5" cellpadding="5">
+		<tr>
+			<td class="myLabel">朋友称呼:</td>
+			<td><input type="text" name="toName" value="" id="toName"></td>
+		</tr>
+		<tr>
+			<td class="myLabel">俺的名字:</td>
+			<td><input type="text" name="fromName" value="启明玩具" id="fromName"></td>
+		</tr>
+		<tr>
+			<td class="myLabel">给朋友捎句话:</td>
+			<td><input type="text" name="content" value="亲，您好，" id="content" style="width:440px"></td>
+		</tr>
+	</table>
+	<div>
+		<input type="button" name="btnGenerateUrl" value="生成 URL" id="btnGenerateUrl" onClick="generateUrl();">
+		<span id="clip_container">
+			<span id="clip_button">
+				<input type="button" name="copyUrl" value="复制 URL" id="btnCopyUrl">
+			</span>
+		</span>
+		<span id="messageField"></span>
+	</div>
+	<div>
+		<input type="text" name="urlField" value="" id="urlField" style="width:640px">
+	</div>
+</body>
+</html>
