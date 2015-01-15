@@ -50,8 +50,6 @@
 	}
 	
 	$(document).ready(function() {
-		$('#fav').addFavorite('收藏本站',location.href);
-		
 		if (validate()) {
 			$('#main').show();
 		} else {
@@ -72,6 +70,7 @@
 			$('#fromName').text('启明玩具');
 		}
 		
+		$('#fav').addFavorite('收藏本站',location.href);
 	});
 	</script>
 </head>
@@ -95,9 +94,9 @@
 		<p>
 			<label id="fromName"></label>
 		</p>
+		
+		<a href="javascript:;" title="收藏该页" id="fav">收藏该页</a>
 	</div>
-	
-	<a href="javascript:;" title="收藏该页" id="fav">收藏该页</a>
 
 </body>
 </html>
