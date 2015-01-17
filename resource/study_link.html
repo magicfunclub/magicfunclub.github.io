@@ -36,12 +36,7 @@
 		var toName = $('#toName').val();
 		var fromName = $('#fromName').val();
 		var content = $('#content').val();
-		var keyword = $('#keyword').val();
-		var goodId = $('#goodId').val();
-		var category = $('#category').val();
-		var wangwang = $('#wangwang').val();
-		var lastDays = $('#lastDays').val() ? $('#lastDays').val() : 1;
-		
+		var anchorId = $('#anchorId').val();
 		
 		var currentDateTime = new Date();
 		var curr = currentDateTime.getTime(); 
@@ -52,7 +47,8 @@
 		'&fromName=' + encodeURIComponent(reverseWords(fromName)) + 
 		'&content=' + encodeURIComponent(reverseWords(content)) +
 		'&curr=' + curr + 
-		'&token=' + encodeURIComponent(reverseWords(token));
+		'&token=' + encodeURIComponent(reverseWords(token)) + 
+		'#' + anchorId;
 		
 		$('#urlField').val(pageUrl);
 	}	
@@ -65,12 +61,25 @@
 			<td><input type="text" name="toName" value="" id="toName"></td>
 		</tr>
 		<tr>
-			<td class="myLabel">俺的名字:</td>
-			<td><input type="text" name="fromName" value="启明玩具" id="fromName"></td>
+			<td class="myLabel">给朋友捎句话:</td>
+			<td><input type="text" name="content" value="" id="content" style="width:440px"></td>
 		</tr>
 		<tr>
-			<td class="myLabel">给朋友捎句话:</td>
-			<td><input type="text" name="content" value="亲，您好，" id="content" style="width:440px"></td>
+			<td class="myLabel">锚点:</td>
+			<td>
+				<select name="anchorId" id="anchorId">
+				  <option value ="">默认</option>
+				  <option value ="layer2">二阶</option>
+				  <option value ="layer3">三阶</option>
+				  <option value ="layer4">四阶</option>
+				  <option value ="layer5">五阶</option>
+				  <option value ="layer6">六阶</option>
+				</select>
+			</td>
+			<tr>
+				<td class="myLabel">俺的名字:</td>
+				<td><input type="text" name="fromName" value="启明玩具" id="fromName"></td>
+			</tr>
 		</tr>
 	</table>
 	<div>
