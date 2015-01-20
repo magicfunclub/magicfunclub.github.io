@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>售价/折扣-查询</title>
+	<script src="js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.md5.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/js-util.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/main.js" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	
+	jQuery.fn.addFavorite = function(l, h) {
+	    return this.click(function() {
+	        var t = jQuery(this);
+	        if(jQuery.browser.msie) {
+	            window.external.addFavorite(h, l);
+	        } else if (jQuery.browser.mozilla || jQuery.browser.opera) {
+	            t.attr("rel", "sidebar");
+	            t.attr("title", l);
+	            t.attr("href", h);
+	        } else {
+	            alert("请使用Ctrl+D将本页加入收藏夹！");
+	        }
+	    });
+	};
+	
+	$(document).ready(function() {
+		
+		// populate product items
+		$.getJSON( "data/products.json", function( data ) {
+
+			//var str = "";
+		    $(data.products).each(function(){
+				//str = str + this.name + "; ";
+		        $("#main").append(
+					"<div name='product888'>" 
+					+ this.name 
+					+ "</div>");
+		     });
+		});
+		
+		$("input[name='amount']").bind("change paste keyup", function() {
+			var calc_total = parseFloat($(this).siblings("input[name='sale_price']").val()) * parseInt($(this).val(),10); 
+			$(this).siblings("input[name='total']").val(calc_total.toFixed(2));
+			
+			calc();
+		});
+		
+		$('#fav').addFavorite('收藏本站',location.href);
+	});
+	
+	function calc(){
+		// calc total item counts
+		// calc total sale price
+		// calc total discount
+	}
+	
+	</script>
+</head>
+<body>
+	<div id="main">
+	</div>
+	
+	<br/>
+	<div id="main2">
+		<div id="product_1" name="product">
+			圣手二阶 
+			<input type="text" name="sale_price" size="6" readonly="true" value="9.8"/> *
+			<input type="text" name="amount" size="3" value="0"/> =
+			<input type="text" name="total" size="8" readonly="true" value="0"/>
+		</div>
+		<div id="product_2" name="product">
+			圣手三阶
+			<input type="text" name="sale_price" size="6" readonly="true" value="9"/> *
+			<input type="text" name="amount" size="3" value="0"/> =
+			<input type="text" name="total" size="8" readonly="true" value="0"/>
+		</div>
+		<div id="product_3" name="product">
+			圣手四阶
+			<input type="text" name="sale_price" size="6" readonly="true" value="21.6"/> *
+			<input type="text" name="amount" size="3" value="0"/> =
+			<input type="text" name="total" size="8" readonly="true" value="0"/>
+		</div>
+	</div>
+	
+	<br/>
+	<div>
+		<a href="javascript:;" title="收藏该页" id="fav">收藏该页</a>
+	</div>
+
+	<script type="text/javascript">
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ff0e9555085712c4380143572a196248a' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+
+</body>
+</html>
