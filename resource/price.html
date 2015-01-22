@@ -41,17 +41,19 @@
 					+ "<input type='text' name='total_price' size='8' readonly='true' value='0' />"
 					+ "</div>");
 		     });
-		});
-		
-		$("input[name='amount']").bind("change paste keyup", function() {
-			var calc_total = parseFloat($(this).siblings("input[name='sale_price']").val()) * parseInt($(this).val() === ""?0:$(this).val(),10); 
-			$(this).siblings("input[name='total_price']").val(calc_total.toFixed(2));
+			 
+	 		$("input[name='amount']").bind("change paste keyup", function() {
+	 			var calc_total = parseFloat($(this).siblings("input[name='sale_price']").val()) * parseInt($(this).val() === ""?0:$(this).val(),10); 
+	 			$(this).siblings("input[name='total_price']").val(calc_total.toFixed(2));
 			
-			calc();
-		});
+	 			calc();
+	 		});
 		
-		$("#actual_discount").bind("change paste keyup", function() {
-			calc();
+	 		$("#actual_discount").bind("change paste keyup", function() {
+	 			calc();
+	 		});
+			 
+			 
 		});
 		
 		$('#fav').addFavorite('收藏本站',location.href);
