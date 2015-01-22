@@ -41,9 +41,13 @@
 		});
 		
 		$("input[name='amount']").bind("change paste keyup", function() {
-			var calc_total = parseFloat($(this).siblings("input[name='sale_price']").val()) * parseInt($(this).val(),10); 
-			$(this).siblings("input[name='total']").val(calc_total.toFixed(2));
+			var calc_total = parseFloat($(this).siblings("input[name='sale_price']").val()) * parseInt($(this).val() === ""?0:$(this).val(),10); 
+			$(this).siblings("input[name='total_price']").val(calc_total.toFixed(2));
 			
+			calc();
+		});
+		
+		$("#actual_discount").bind("change paste keyup", function() {
 			calc();
 		});
 		
@@ -51,36 +55,84 @@
 	});
 	
 	function calc(){
-		// calc total item counts
-		// calc total sale price
-		// calc total discount
+		var sum_total_price = 0;
+		var sum_total_item = 0; 
+		var max_discount = 0; 
+		
+		$.each($("input[name='total_price']"), function(i, val){
+			sum_total_price = sum_total_price + parseFloat(val.value);
+		});  
+		
+		if (sum_total_price > 0) {
+			$("#sum_total_price").val(sum_total_price.toFixed(2));
+		} else {
+			$("#sum_total_price").val("");
+		}
+		
+		$.each($("input[name='amount']"), function(i, val){
+			if(val.value !== "" && val.value > 0) {
+				sum_total_item = sum_total_item + parseInt(val.value, 10);
+			}
+		});  
+
+		if (sum_total_item > 0) {
+			$("#sum_total_item").val(sum_total_item);
+		} else {
+			$("#sum_total_item").val(0);
+		}
+		
+		if (sum_total_item >= 2) {
+			max_discount = ((sum_total_item - 1) * 5 * 0.3).toFixed(2);
+		}
+		
+		if (max_discount > 0) {
+			$("#max_discount").val(max_discount);
+		} else {
+			$("#max_discount").val(0);
+		}
+		
+		
+		if ($("#sum_total_price").val() >= 0) {
+			var actual_price = ($("#sum_total_price").val() - $("#actual_discount").val()).toFixed(2);
+			$("#actual_price").val(actual_price);
+		}
+		
 	}
 	
 	</script>
 </head>
 <body>
 	<div id="main">
+		<div id="summary_info">
+			总价: <input type="text" id="sum_total_price" size="8" readonly="true" value=""/>
+			数量: <input type="text" id="sum_total_item" size="8" readonly="true" value=""/>
+			最大优惠额: <input type="text" id="max_discount" size="8" readonly="true" value=""/>
+		</div>
+		<div id="actual_info">
+			实际优惠额: <input type="text" id="actual_discount" size="8" value=""/>
+			最终价格: <input type="text" id="actual_price" size="8" readonly="true" value=""/>
+		</div>
 	</div>
 	
 	<br/>
-	<div id="main2">
+	<div id="main2">		
 		<div id="product_1" name="product">
 			圣手二阶 
 			<input type="text" name="sale_price" size="6" readonly="true" value="9.8"/> *
 			<input type="text" name="amount" size="3" value="0"/> =
-			<input type="text" name="total" size="8" readonly="true" value="0"/>
+			<input type="text" name="total_price" size="8" readonly="true" value="0"/>
 		</div>
 		<div id="product_2" name="product">
 			圣手三阶
 			<input type="text" name="sale_price" size="6" readonly="true" value="9"/> *
 			<input type="text" name="amount" size="3" value="0"/> =
-			<input type="text" name="total" size="8" readonly="true" value="0"/>
+			<input type="text" name="total_price" size="8" readonly="true" value="0"/>
 		</div>
 		<div id="product_3" name="product">
 			圣手四阶
 			<input type="text" name="sale_price" size="6" readonly="true" value="21.6"/> *
 			<input type="text" name="amount" size="3" value="0"/> =
-			<input type="text" name="total" size="8" readonly="true" value="0"/>
+			<input type="text" name="total_price" size="8" readonly="true" value="0"/>
 		</div>
 	</div>
 	
