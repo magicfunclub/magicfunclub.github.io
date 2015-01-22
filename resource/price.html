@@ -34,8 +34,11 @@
 		    $(data.products).each(function(){
 				//str = str + this.name + "; ";
 		        $("#main").append(
-					"<div name='product888'>" 
+					"<div name='product'>" 
 					+ this.name 
+					+ "<input type='text' name='sale_price' size='6' readonly='true' value='" + this.sale_price + "'/> *"
+					+ "<input type='text' name='amount' size='3' value='0' /> ="
+					+ "<input type='text' name='total_price' size='8' readonly='true' value='0' />"
 					+ "</div>");
 		     });
 		});
@@ -115,6 +118,7 @@
 		<hr style="FILTER: alpha(opacity=0,finishopacity=100,style=1)" width="100%" SIZE=2 />
 	</div>
 	
+	<!-- 
 	<div id="main2">		
 		<div id="product_1" name="product">
 			圣手二阶 
@@ -135,6 +139,7 @@
 			<input type="text" name="total_price" size="8" readonly="true" value="0"/>
 		</div>
 	</div>
+	-->
 	
 	<br/>
 	<div>
