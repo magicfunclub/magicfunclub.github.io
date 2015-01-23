@@ -8,7 +8,7 @@
 	span.productname {
 	  display:-moz-inline-box;
 	  display:inline-block;
-	  width:150px;
+	  width:175px;
 	}
 	</style>
 	
@@ -44,8 +44,8 @@
 		        $("#main").append(
 					"<div name='product'>" 
 					+ "<span class='productname'>" + this.name + "</span>"  
-					+ "<input type='text' name='sale_price' size='6' readonly='true' value='" + this.sale_price + "'/> *"
-					+ "<input type='text' name='amount' size='3' value='0' /> ="
+					+ "<input type='text' name='sale_price' size='6' readonly='true' value='" + this.sale_price + "'/> * "
+					+ "<input type='text' name='amount' size='3' value='0' tabindex=" + this.id + " /> ="
 					+ "<input type='text' name='total_price' size='8' readonly='true' value='0' />"
 					+ "</div>");
 		     });
