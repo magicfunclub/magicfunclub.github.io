@@ -35,8 +35,11 @@
 	
 	$(document).ready(function() {
 		
+		var currentDateTime = new Date();
+		var curr = currentDateTime.getTime(); 
+		
 		// populate product items
-		$.getJSON( "data/products.json", function( data ) {
+		$.getJSON( "data/products.json?curr=" + curr, function( data ) {
 		    $(data.products).each(function(){
 		        $("#main").append(
 					"<div name='product'>" 
