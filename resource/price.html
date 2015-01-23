@@ -4,6 +4,14 @@
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<title>售价/折扣-查询</title>
+	<style type="text/css">
+	span.productname {
+	  display:-moz-inline-box;
+	  display:inline-block;
+	  width:150px;
+	}
+	</style>
+	
 	<script src="js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/jquery.md5.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/js-util.js" type="text/javascript" charset="utf-8"></script>
@@ -29,13 +37,10 @@
 		
 		// populate product items
 		$.getJSON( "data/products.json", function( data ) {
-
-			//var str = "";
 		    $(data.products).each(function(){
-				//str = str + this.name + "; ";
 		        $("#main").append(
 					"<div name='product'>" 
-					+ this.name 
+					+ "<span class='productname'>" + this.name + "</span>"  
 					+ "<input type='text' name='sale_price' size='6' readonly='true' value='" + this.sale_price + "'/> *"
 					+ "<input type='text' name='amount' size='3' value='0' /> ="
 					+ "<input type='text' name='total_price' size='8' readonly='true' value='0' />"
@@ -120,10 +125,11 @@
 		<hr style="FILTER: alpha(opacity=0,finishopacity=100,style=1)" width="100%" SIZE=2 />
 	</div>
 	
-	<!-- 
+	<!--
+	<hr style="FILTER: alpha(opacity=0,finishopacity=100,style=1)" width="100%" SIZE=2 />
 	<div id="main2">		
 		<div id="product_1" name="product">
-			圣手二阶 
+			<span class="productname">圣手二阶</span>
 			<input type="text" name="sale_price" size="6" readonly="true" value="9.8"/> *
 			<input type="text" name="amount" size="3" value="0"/> =
 			<input type="text" name="total_price" size="8" readonly="true" value="0"/>
@@ -135,13 +141,13 @@
 			<input type="text" name="total_price" size="8" readonly="true" value="0"/>
 		</div>
 		<div id="product_3" name="product">
-			圣手四阶
-			<input type="text" name="sale_price" size="6" readonly="true" value="21.6"/> *
+			圣手2到9阶终极套餐
+			<input type="text" name="sale_price" size="6" readonly="true" value="756"/> *
 			<input type="text" name="amount" size="3" value="0"/> =
 			<input type="text" name="total_price" size="8" readonly="true" value="0"/>
 		</div>
-	</div>
-	-->
+	</div>-->
+	
 	
 	<br/>
 	<div>
