@@ -1,13 +1,13 @@
 {
 	"products": [
-		{ "id":"1001", "name":"圣手二阶", "sale_price":"9.8" },
-		{ "id":"1002", "name":"圣手三阶", "sale_price":"9" },
-		{ "id":"1003", "name":"圣手四阶", "sale_price":"21.6" },
-		{ "id":"1004", "name":"圣手五阶", "sale_price":"25" },
-		{ "id":"1005", "name":"圣手六阶", "sale_price":"78" },
-		{ "id":"1006", "name":"圣手七阶", "sale_price":"96" },
-		{ "id":"1007", "name":"圣手八阶", "sale_price":"258" },
-		{ "id":"1008", "name":"圣手九阶", "sale_price":"268" },
+		{ "id":"1001", "name":"圣手二阶[含教]", "sale_price":"9.8" },
+		{ "id":"1002", "name":"圣手三阶[含教]", "sale_price":"9" },
+		{ "id":"1003", "name":"圣手四阶[含教]", "sale_price":"21.6" },
+		{ "id":"1004", "name":"圣手五阶[含教]", "sale_price":"25" },
+		{ "id":"1005", "name":"圣手六阶[含教]", "sale_price":"78" },
+		{ "id":"1006", "name":"圣手七阶[无教]", "sale_price":"96" },
+		{ "id":"1007", "name":"圣手八阶[无教]", "sale_price":"258" },
+		{ "id":"1008", "name":"圣手九阶[无教]", "sale_price":"268" },
 		
 		{ "id":"1009", "name":"圣手[二、三]阶", "sale_price":"18.2" },
 		{ "id":"1010", "name":"圣手[二、四]阶", "sale_price":"30" },
