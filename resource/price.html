@@ -45,7 +45,10 @@
 					"<div name='product'>" 
 					+ "<span class='productname'>" + this.name + "</span>"  
 					+ "<input type='text' name='sale_price' size='6' readonly='true' value='" + this.sale_price + "'/> * "
-					+ "<input type='text' name='amount' size='3' value='0' tabindex=" + this.id + " /> ="
+					+ "<input type='text' name='amount' size='3' value='0' tabindex=" + this.id + " />"
+					+ "<input type='button' name='minus_one' value='-' />"
+					+ "<input type='button' name='plus_one' value='+' />"
+					+ "="
 					+ "<input type='text' name='total_price' size='8' readonly='true' value='0' />"
 					+ "</div>");
 		     });
@@ -60,7 +63,30 @@
 	 		$("#actual_discount").bind("change paste keyup", function() {
 	 			calc();
 	 		});
+			
+			$("input[name='minus_one']").click(function(){
+				var original_amount = $(this).siblings("input[name='amount']").val()=== ""?0:parseInt($(this).siblings("input[name='amount']").val(),10);
+				if (original_amount >= 1) {
+					$(this).siblings("input[name='amount']").val(original_amount - 1);
+				} else {
+					$(this).siblings("input[name='amount']").val(0);
+				}
+				
+				var calc_total = parseFloat($(this).siblings("input[name='sale_price']").val()) * parseInt($(this).siblings("input[name='amount']").val(),10); 
+	 			$(this).siblings("input[name='total_price']").val(calc_total.toFixed(2));
+			
+	 			calc();
+			});
 			 
+			$("input[name='plus_one']").click(function(){
+				var original_amount = $(this).siblings("input[name='amount']").val()=== ""?0:parseInt($(this).siblings("input[name='amount']").val(),10);
+				$(this).siblings("input[name='amount']").val(original_amount + 1);
+				
+				var calc_total = parseFloat($(this).siblings("input[name='sale_price']").val()) * parseInt($(this).siblings("input[name='amount']").val(),10); 
+	 			$(this).siblings("input[name='total_price']").val(calc_total.toFixed(2));
+			
+	 			calc();
+			});
 			 
 		});
 		
@@ -128,29 +154,40 @@
 		<hr style="FILTER: alpha(opacity=0,finishopacity=100,style=1)" width="100%" SIZE=2 />
 	</div>
 	
-	<!--
+
 	<hr style="FILTER: alpha(opacity=0,finishopacity=100,style=1)" width="100%" SIZE=2 />
+	<!--
 	<div id="main2">		
 		<div id="product_1" name="product">
 			<span class="productname">圣手二阶</span>
 			<input type="text" name="sale_price" size="6" readonly="true" value="9.8"/> *
-			<input type="text" name="amount" size="3" value="0"/> =
+			<input type="text" name="amount" size="3" value="0"/>
+			<input type="button" name="minus_one" value="-" />
+			<input type="button" name="plus_one" value="+" />
+			=
 			<input type="text" name="total_price" size="8" readonly="true" value="0"/>
+
 		</div>
 		<div id="product_2" name="product">
 			圣手三阶
 			<input type="text" name="sale_price" size="6" readonly="true" value="9"/> *
-			<input type="text" name="amount" size="3" value="0"/> =
+			<input type="text" name="amount" size="3" value="0"/> 
+			<input type="button" name="minus_one" value="-" />
+			<input type="button" name="plus_one" value="+" />
+			=
 			<input type="text" name="total_price" size="8" readonly="true" value="0"/>
 		</div>
 		<div id="product_3" name="product">
 			圣手2到9阶终极套餐
 			<input type="text" name="sale_price" size="6" readonly="true" value="756"/> *
-			<input type="text" name="amount" size="3" value="0"/> =
+			<input type="text" name="amount" size="3" value="0"/> 
+			<input type="button" name="minus_one" value="-" />
+			<input type="button" name="plus_one" value="+" />
+			=
 			<input type="text" name="total_price" size="8" readonly="true" value="0"/>
 		</div>
-	</div>-->
-	
+	</div>
+	-->
 	
 	<br/>
 	<div>
