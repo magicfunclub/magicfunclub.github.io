@@ -13,7 +13,14 @@
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
-        
+		
+		<script type='text/javascript' src="http://ajax.useso.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="js/jquery.md5.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type='text/javascript' src="bootstrap/js/bootstrap.min.js"></script>
+		<script type='text/javascript' src="http://ajax.useso.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+		<script type="text/javascript" src="js/main.js" charset="utf-8"></script>
+		<script src="js/js-util.js" type="text/javascript" charset="utf-8"></script>
+		
 <style type="text/css">
 body {
  padding-top:50px;
@@ -81,7 +88,7 @@ body {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">启明玩具</a>
+      <a href="#" class="navbar-brand">启明玩具</a>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
@@ -97,6 +104,9 @@ body {
         <li>
           <a href="#sec">圣手异形集合</a>
         </li>
+		<li>
+		  <a href="javascript:;" title="收藏该页" id="fav">收藏该页</a>
+		</li>
       </ul>
     </nav>
   </div>
@@ -233,12 +243,81 @@ body {
 
 
 
-<script type='text/javascript' src="http://ajax.useso.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script type='text/javascript' src="bootstrap/js/bootstrap.min.js"></script>
-<script type='text/javascript' src="http://ajax.useso.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
-<script type="text/javascript" src="js/main.js" charset="utf-8"></script>
 
-        
+
+<script type="text/javascript" charset="utf-8">
+	
+	jQuery.fn.addFavorite = function(l, h) {
+	    return this.click(function() {
+	        var t = jQuery(this);
+	        if(jQuery.browser.msie) {
+	            window.external.addFavorite(h, l);
+	        } else if (jQuery.browser.mozilla || jQuery.browser.opera) {
+	            t.attr("rel", "sidebar");
+	            t.attr("title", l);
+	            t.attr("href", h);
+	        } else {
+	            alert("请使用Ctrl+D将本页加入收藏夹！");
+	        }
+	    });
+	};
+	
+	function validate() {
+		if (!getURLParameter('toName')) {
+			return false; 
+		}
+		
+		if (!getURLParameter('token')) {
+			return false; 
+		}
+		
+		if (!getURLParameter('curr')) {
+			return false; 
+		}
+		
+		var toName = reverseWords(getURLParameter('toName'));
+		var curr = getURLParameter('curr');
+		var token = reverseWords(getURLParameter('token'));
+		var correctToken = $.md5(toName + curr);
+		
+		if (correctToken !== token) {
+			return false; 
+		}
+		
+		return true; 
+	}
+	
+	$(document).ready(function() {
+		if (validate()) {
+			$('#main').show();
+		} else {
+			$('#main').remove();
+			window.location = "http://magicfun.club/404.html";
+		}
+	
+		var fromName = getURLParameter('fromName') ? reverseWords(getURLParameter('fromName')) : '';
+		var toName = getURLParameter('toName') ? reverseWords(getURLParameter('toName')) : '';
+		var content = getURLParameter('content') ? reverseWords(getURLParameter('content')) : ''; 
+
+		$('#toName').text('您好，' + toName);
+		
+		if (content) {
+			$('#content').text(content);
+		} else {
+			$('#content').remove();
+		}
+		
+		
+		if (fromName) {
+			$('#fromName').text(fromName);
+		} else {
+			$('#fromName').text('启明玩具');
+		}
+		
+		$('#fav').addFavorite('收藏本站',location.href);
+	});
+</script>
+
 <script type='text/javascript'>
         
 $(document).ready(function() {
@@ -275,6 +354,8 @@ $('a[href*=#]:not([href=#])').click(function() {
 });
         
 </script>
+
+
         
 </body>
 </html>
