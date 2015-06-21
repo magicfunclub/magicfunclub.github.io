@@ -26,7 +26,8 @@
 		});
 
 		clip.addEventListener('complete', function (client, text) {
-			$('#messageField').css('color','red').text('已将链接复制到剪切板，快试试CTRL+V吧！').show().fadeOut(2000);
+			$('#messageField').css('color','red').text('已将"链接地址"复制到剪切板，快试试CTRL+V吧！').show().fadeOut(2000);
+			$('#currentFriend').text($('#toName').val() + '[链接地址]');
 		});
 
 		clip.glue('clip_button','clip_container');
@@ -39,7 +40,8 @@
 		});
 
 		clip2.addEventListener('complete', function (client, text) {
-			$('#messageField2').css('color','red').text('已将智能推荐文字复制到剪切板，快试试CTRL+V吧！').show().fadeOut(2000);
+			$('#messageField2').css('color','red').text('已将"智能推荐文字"复制到剪切板，快试试CTRL+V吧！').show().fadeOut(2000);
+			$('#currentFriend').text($('#toName').val() + '[智能推荐文字]');
 		});
 
 		clip2.glue('clip_button2','clip_container2');
@@ -102,6 +104,11 @@
 			</tr>
 		</tr>
 	</table>
+	
+	<p>
+		<span>当前粘贴板:</span> <span id="currentFriend" style="color:red;"></span>
+	</p>
+	
 	<div>
 		<input type="button" name="btnGenerateUrl" value="生成 URL" id="btnGenerateUrl" onClick="generateUrl();">
 		<span id="clip_container">
@@ -114,6 +121,7 @@
 	<div>
 		<input type="text" name="urlField" value="" id="urlField" style="width:640px">
 	</div>
+	<br/>
 	<div>
 		<span id="clip_container2">
 			<span id="clip_button2">
@@ -125,7 +133,7 @@
 	<div>
 		<input type="text" name="urlField2" value="" id="urlField2" style="width:640px">
 	</div>
-	<div>
+	<div style="display:none;">
 		<span>
 			亲，感谢您选择启明玩具，我们为亲整理了以下魔方学习资料(建议通过电脑而不是手机打开以下网页链接)，希望对亲有所帮助。
 		</span>
