@@ -30,6 +30,19 @@
 		});
 
 		clip.glue('clip_button','clip_container');
+		
+		
+		clip2 = new ZeroClipboard.Client();
+		clip2.setHandCursor(true);
+		clip2.addEventListener('mouseOver', function (client) {
+			clip2.setText($('#urlField2').val());
+		});
+
+		clip2.addEventListener('complete', function (client, text) {
+			$('#messageField2').css('color','red').text('已将智能推荐文字复制到剪切板，快试试CTRL+V吧！').show().fadeOut(2000);
+		});
+
+		clip2.glue('clip_button2','clip_container2');
 	});
 
 	function generateUrl() {
@@ -51,6 +64,7 @@
 		'#' + anchorId;
 		
 		$('#urlField').val(pageUrl);
+		$('#urlField2').val("感谢您选择启明玩具，我们为亲整理了以下魔方学习资料(建议通过电脑而不是手机打开以下网页链接)，希望对亲有所帮助。 " + pageUrl);
 	}	
 	</script>
 </head>
@@ -99,6 +113,17 @@
 	</div>
 	<div>
 		<input type="text" name="urlField" value="" id="urlField" style="width:640px">
+	</div>
+	<div>
+		<span id="clip_container2">
+			<span id="clip_button2">
+				<input type="button" name="copyUrl2" value="智能推荐" id="btnCopyUrl2">
+			</span>
+		</span>
+		<span id="messageField2"></span>
+	</div>
+	<div>
+		<input type="text" name="urlField2" value="" id="urlField2" style="width:640px">
 	</div>
 	<div>
 		<span>
