@@ -150,22 +150,10 @@ body {
       
       <!--right-->
       <div class="col-md-9">
-        <h2 id="front">感谢您选择启明玩具</h2>
+		<hr>
+		
 		<p>
-			<label id="toName"></label>,
-		</p>
-		<p>
-			<label id="content"></label>
-		</p>
-		<p>
-			以下是我个人在学习过程中整理的魔方学习资料，希望对您有所帮助！您可以通过点击页面上方的"收藏该页"记住我哦~
-		</p>
-		<br>
-		<p>
-			谢谢!
-		</p>
-		<p>
-			<label id="fromName"></label>
+			以下是我个人在学习过程中整理的魔方学习资料，可以通过点击页面上方的<strong>"收藏该页"</strong>记住我哦~
 		</p>
 		
         <hr>
@@ -464,58 +452,7 @@ body {
 	    });
 	};
 	
-	function validate() {
-		if (!getURLParameter('toName')) {
-			return false; 
-		}
-		
-		if (!getURLParameter('token')) {
-			return false; 
-		}
-		
-		if (!getURLParameter('curr')) {
-			return false; 
-		}
-		
-		var toName = reverseWords(getURLParameter('toName'));
-		var curr = getURLParameter('curr');
-		var token = reverseWords(getURLParameter('token'));
-		var correctToken = $.md5(toName + curr);
-		
-		if (correctToken !== token) {
-			return false; 
-		}
-		
-		return true; 
-	}
-	
 	$(document).ready(function() {
-		if (validate()) {
-			$('#main').show();
-		} else {
-			$('#main').remove();
-			window.location = "http://magicfun.club/404.html";
-		}
-	
-		var fromName = getURLParameter('fromName') ? reverseWords(getURLParameter('fromName')) : '';
-		var toName = getURLParameter('toName') ? reverseWords(getURLParameter('toName')) : '';
-		var content = getURLParameter('content') ? reverseWords(getURLParameter('content')) : ''; 
-
-		$('#toName').text('您好，' + toName);
-		
-		if (content) {
-			$('#content').text(content);
-		} else {
-			$('#content').remove();
-		}
-		
-		
-		if (fromName) {
-			$('#fromName').text(fromName);
-		} else {
-			$('#fromName').text('启明玩具');
-		}
-		
 		$('#fav').addFavorite('启明玩具 - 魔方玩法介绍',location.href);
 	});
 </script>
