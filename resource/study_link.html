@@ -26,10 +26,25 @@
 		});
 
 		clip.addEventListener('complete', function (client, text) {
-			$('#messageField').css('color','red').text('已将链接复制到剪切板，快试试CTRL+V吧！').show().fadeOut(2000);
+			$('#messageField').css('color','red').text('已将"链接地址"复制到剪切板，快试试CTRL+V吧！').show().fadeOut(2000);
+			$('#currentFriend').text($('#toName').val() + '[链接地址]');
 		});
 
 		clip.glue('clip_button','clip_container');
+		
+		
+		clip2 = new ZeroClipboard.Client();
+		clip2.setHandCursor(true);
+		clip2.addEventListener('mouseOver', function (client) {
+			clip2.setText($('#urlField2').val());
+		});
+
+		clip2.addEventListener('complete', function (client, text) {
+			$('#messageField2').css('color','red').text('已将"智能推荐文字"复制到剪切板，快试试CTRL+V吧！').show().fadeOut(2000);
+			$('#currentFriend').text($('#toName').val() + '[智能推荐文字]');
+		});
+
+		clip2.glue('clip_button2','clip_container2');
 	});
 
 	function generateUrl() {
@@ -51,6 +66,7 @@
 		'#' + anchorId;
 		
 		$('#urlField').val(pageUrl);
+		$('#urlField2').val("感谢您选择启明玩具，我们为亲整理了以下魔方学习资料(建议通过电脑而不是手机打开以下网页链接)，希望对亲有所帮助。 " + pageUrl);
 	}	
 	</script>
 </head>
@@ -75,6 +91,11 @@
 				  <option value ="layer5">五阶</option>
 				  <option value ="layer6">六阶</option>
 				  <option value ="yx_mirror">镜面</option>
+				  <option value ="yx_5mo">镜面</option>
+				  <option value ="yx_pyramid">五魔方</option>
+				  <option value ="yx_skewb">金字塔</option>
+				  <option value ="yx_zongzi">斜转</option>
+				  <option value ="yx_sq1">SQ1</option>
 				</select>
 			</td>
 			<tr>
@@ -83,8 +104,16 @@
 			</tr>
 		</tr>
 	</table>
+	
+	<p>
+		<span>当前粘贴板:</span> <span id="currentFriend" style="color:red;"></span>
+	</p>
+	
 	<div>
-		<input type="button" name="btnGenerateUrl" value="生成 URL" id="btnGenerateUrl" onClick="generateUrl();">
+		<input type="button" name="btnGenerateUrl" value="生成URL及智能推荐文字" id="btnGenerateUrl" onClick="generateUrl();">
+	</div>
+	
+	<div>
 		<span id="clip_container">
 			<span id="clip_button">
 				<input type="button" name="copyUrl" value="复制 URL" id="btnCopyUrl">
@@ -95,7 +124,20 @@
 	<div>
 		<input type="text" name="urlField" value="" id="urlField" style="width:640px">
 	</div>
+	<br/>
 	<div>
+		<span id="clip_container2">
+			<span id="clip_button2">
+				<input type="button" name="copyUrl2" value="复制推荐文字" id="btnCopyUrl2">
+			</span>
+			<span>(文字生成后点击该按钮，观察当前粘贴板是否已显示当前朋友的称呼，然后Ctrl+V到旺旺窗口并发送)</span>
+		</span>
+		<span id="messageField2"></span>
+	</div>
+	<div>
+		<input type="text" name="urlField2" value="" id="urlField2" style="width:640px">
+	</div>
+	<div style="display:none;">
 		<span>
 			亲，感谢您选择启明玩具，我们为亲整理了以下魔方学习资料(建议通过电脑而不是手机打开以下网页链接)，希望对亲有所帮助。
 		</span>
